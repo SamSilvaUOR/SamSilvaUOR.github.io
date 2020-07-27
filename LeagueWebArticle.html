@@ -111,7 +111,7 @@
    <!-- About Section
    ================================================== -->
 
-            <h1 style= "margin-top: 100px; margin-left: 200px; margin-right: 200px;">What Influeces a Win in League of Legends?</h1>
+            <h1 >What Influeces a Win in League of Legends?</h1>
 
             <div class="info-block">
                 <div class="info-text">
@@ -139,10 +139,10 @@
                 </div>
             </div>
 
-            <h2 style= "margin-top: 100px; margin-left: 200px; margin-right: 200px;">The Data</h2>
+            <h2 >The Data</h2>
 
 
-            <p style="margin-top: 25px; margin-left: 200px; margin-right: 200px;">
+            <p >
                 The data used in this project is imported from <a href="https://oracleselixir.com/"> Oracle's Elixir</a>, but it is possible to obtain additonal data using a key for the Riot API. 
                 The personal key is easy to recieve, but doesn't have a large amount of features that are super relevant to "deep data".  
                 The Oracle data used consists of matches from the League of Legends split from January to 07/21/2020.
@@ -153,7 +153,7 @@
                 However, I want to run an SVM and a neural network due to its power and ease of inputting variables.
             </p>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
                 After looking at the dataframe,
                 the columns that need to be given numeric codes includes the champion names which often appear in the `ban` columns 
                 and the column of the player being played. 
@@ -174,10 +174,10 @@
                 Each champion is given a number in alaphabetic order, for example, Aatrox is 1, Ahri-2,...Zyra-148.</div>
             </div>
     
-            <h2 style= "margin-top: 100px; margin-left: 200px; margin-right: 200px;">Correlations</h2>
+            <h2>Correlations</h2>
 
 
-            <p style= "margin-top: 50px; margin-left: 200px; margin-right: 200px;">
+            <p>
               Normally I like visualizing the data with the seaborn package to check out the correlations between features, 
               this gives a general idea on what variables impact the result of a League match.  
               However, when there is 90 something variables, a heatmap and correlation plot looks pretty messy.
@@ -190,7 +190,7 @@
               <div class="caption" style= "margin-left: 200px; margin-right: 200px; margin-bottom: 30px"> text for caption</div>
             </div>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               Looking the the fifteen most correlated variables with winning we do not see anything too surprising. 
               Variables involving towers are the top two most correlated which makes sense. 
               The more towers you destroy the easier it is to get into a team's base. 
@@ -209,7 +209,7 @@
               <div class="caption" style= "margin-left: 200px; margin-right: 200px; margin-bottom: 30px">Caption</div>
             </div>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               We know what is associated with winning, and it isn't shocking to see that losing is correlated with losing dragons, 
               team fights, turrets etc.. 
               However, we see some very small correlations with the gold and xp difference towards the middle of a game. 
@@ -220,10 +220,10 @@
               or what a team needs to do to increase there chances of winning after losing an action.
             </p>
 
-            <h2 style= "margin-top: 100px; margin-left: 200px; margin-right: 200px;">Support Vector Machine (SVM)</h2>
+            <h2>Support Vector Machine (SVM)</h2>
 
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               With some of the correlations in mind, I can use the seaborn package to visualize an example. 
               In this example, I used team kills per minute versus the gold spending percent difference.
               It's pretty clear that the more gold you spend compared to your opponent, and the more kills you get, the better your chances are of winning.
@@ -235,7 +235,7 @@
               <div class="caption" style= "margin-left: 200px; margin-right: 200px; margin-bottom: 30px"> Correlation plot of kills per minute versus the gold spending percent difference </div>
             </div>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               With the correlations in mind, I want to create an SVM to predict if a team will win or lose in a match of LoL.  
               Theoretically and often, I can put in numerous variables into an SVM but it become nearly impossible to find an effecient way 
               to visualize the data.  
@@ -250,7 +250,7 @@
               <div class="caption" style= "margin-left: 200px; margin-right: 200px;"></div>
             </div>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               I get an rbf SVM looking like...
             </p>
     
@@ -264,14 +264,14 @@
               <div class="caption" style= "margin-left: 200px; margin-right: 200px;"> SVM plot of kills per minute versus the gold spending percent difference</div>
             </div>
     
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               Well, that model turned out pretty good, 
               and I can also use Sci-Kit's ".predict()" to input paramters and see the expected result.
             </p>
 
-            <h2 style= "margin-top: 100px; margin-left: 200px; margin-right: 200px;">Neural Network</h2>
+            <h2 >Neural Network</h2>
 
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               Looking at the team data, I created a nueral network with four dense layers and 2 droput layers. The netowrk headTotal params: 1,323
               1,323 Trainable parameters.  I did not conduct any hyper-paramter tuning but recieved very high accuracies on the training, testing, and validation 
               data.
@@ -283,7 +283,7 @@
             </div>
 
 
-            <p style= "margin-left: 200px; margin-right: 200px;">
+            <p >
               I am also able to input parameters and see the result of said input, however, this is where I start to see limitations on the netowrk design.  
               Using Ski-kit's and Keras packages, I have to input a value for every single feature I use in my NN, I cannot input an NaNs.  
               What if I wanted to input mid-game data and see the chances of winning? I could input the information I do have such as kills and make everything else 0?
