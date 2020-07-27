@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44817159-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-44817159-3');
+  </script>
+
+
+
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2'></script>
+  <script type='text/javascript'>
+      
+      $(function(){
+      
+          var iFrames = $('iframe');
+        
+        function iResize() {
+        
+          for (var i = 0, j = iFrames.length; i < j; i++) {
+            iFrames[i].style.height = iFrames[i].contentWindow.document.body.offsetHeight + 'px';}
+            }
+            
+            if ($.browser.safari || $.browser.opera) { 
+            
+               iFrames.load(function(){
+                   setTimeout(iResize, 0);
+                 });
+              
+               for (var i = 0, j = iFrames.length; i < j; i++) {
+                var iSource = iFrames[i].src;
+                iFrames[i].src = '';
+                iFrames[i].src = iSource;
+                 }
+                 
+            } else {
+               iFrames.load(function() { 
+                   this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+               });
+            }
+          
+          });
+
+  </script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('iframe').iframeAutoHeight({debug: true});
+    });
+  </script>
+
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Samuel Silva</title>
+	<meta name="description" content="">
+	<meta name="author" content="Yash Mulgaonkar">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="default.css">
+	 <link rel="stylesheet" href="layout_blue.css">
+   <link rel="stylesheet" href="hexagons.css">
+   <link rel="stylesheet" href="media-queries.css">
+   <link rel="stylesheet" href="magnific-popup.css">
+
+   <link rel="stylesheet" href="portfolio.min.css">
+   <link rel="stylesheet" href="item_page.css"> 
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <!-- Script
+   ================================================== -->
+	<script src="modernizr.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3.0.3/dist/isotope.pkgd.js"></script>
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="background.jpg">
+
+   <style>
+   .responsive {
+       width: 100%;
+       max-width: 200px;
+       height: auto;
+   }
+   </style>
+   <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header id="home">
+
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul id="nav" class="nav">
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+            <li><a class="smoothscroll" href="#projects">Projects</a></li>
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">Samuel Silva</h1>
+            <h2><font color="white">Student / / Physics / / Programming // Player </font></h2>
+            <!-- <hr /> -->
+            <ul class="social">
+               <li><a href="https://github.com/SamSilvaUOR" target="_blank"><i class="fab fa-github"></i></a></li>
+               <li><a href="https://www.linkedin.com/in/samuel-silva-a1357b173/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+         </div>
+      </div>
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
+
+
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
+
+      <div class="row">
+
+         <div class="three columns">
+
+            <img class="profile-pic"  src="ME.jpg" alt="" />
+
+         </div>
+
+         <div class="nine columns main-col">
+
+            <h2>About Me</h2>
+
+            <div class="info-block">
+                <div class="info-text">
+                  <h3> <font color="white">ASPIRING PhD STUDENT!</font></h3>   
+                    <p> I am an aspiring machine learning PhD student.  I graduted with a Bachelor's degree in Physics from the University of Redlands with a minor in mathematics.  
+                       I am very grateful for education there where I recieved multiple honors including the David Miller Award award given to an outstanding physics senior
+                       and The Robert D. Engel Award award given to two students from all the collective sciences.
+                       Thank you to my professors, research advisors, and friends who motivated me throughout my time there.
+
+                        </p>
+
+                        <p>
+                          <a href="https://www.redlands.edu/" target="_blank">
+                            <img src="redlands_style3_white1815-cmyk-300ppi.jpg" style='width:50%;' border="0" alt="Null">
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+
+            <p> It is sort of strange that a physics major wants to pursue an advanced education in machine learning, but 
+               my emphasis throughout college was statistics and data science, where machine learning was introduced near the end.  
+               The class was career changing.  I felt proud that I could use the stats, probability, and programming I have learned and apply it
+               to this branch of computer science.  
+            </p>
+
+            <p>
+               My research interests include physics and chaos theory, eSports and game modeling, as well as economics and health.  
+               I have worked and completed formal research projects ranging from the study of 
+               chaos in electrical systems, as well as studying of economic assistance in preventing child labor.
+            </p>
+
+      
+
+            <div class="row">
+
+               <div class="columns contact-details">
+
+                  <h2>Contact Details</h2>
+                  <p class="address">
+						   <span>Samuel Silva</span><br>
+						   <span>Redlands, California<br>
+                     <span><img src="email.PNG" alt="Email" class="responsive" width="100"></span>
+					   </p>
+
+               </div>
+
+               <div class="columns download">
+                  <p>
+                     <a href="Silva_Samuel_Resume.pdf" target="_blank" class="button"><i class="fa fa-download"></i>Download Resume (.PDF)</a>
+                  </p>
+<!--                   <p>
+                     <a href="index2.html" target="_blank" class="button"><i class="fas fa-external-link-alt"></i>Full Website</a>
+                  </p> -->
+               </div>
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
+      </div>
+
+   </section> <!-- About Section End-->
+
+
+      <!-- Projects Section
+   ================================================== -->
+   <section id="projects">
+
+          <center><h2><font color="white">Projects and Ideas</font></h2></center> <br>
+          <center><p>Filter Topics by Clicking or Tapping the Tabs</p></center>
+          <center><p>Some codes can be found in my <a href="https://github.com/SamSilvaUOR"> Github</a> </p></center>
+
+
+            <iframe id="myIframe" src="projects.html" scrolling="no" frameborder="0" width="100%"></iframe>
+            <script>
+                iFrameResize({ log: true }, '#myIframe')
+            </script>
+
+   </section>
+
+
+   <!-- Projects Section
+   ================================================== -->
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+      <div class="row">
+         <div class="twelve columns">
+
+            <ul class="copyright">
+               <li>&copy;Samuel Silva 2020</li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="landing_page/js/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="flexslider.js"></script>
+   <script src="waypoints.js"></script>
+   <script src="fittext.js"></script>
+   <script src="magnific-popup.js"></script>
+   <script src="init.js"></script>
+   <script src="iframeResizer.min.js"></script>
+   <script type="text/javascript">
+
+    iFrameResize({
+      log                     : true,                  // Enable console logging
+      enablePublicMethods     : true,                  // Enable methods within iframe hosted page
+      resizedCallback         : function(messageData){ // Callback fn when resize is received
+        $('p#callback').html(
+          '<b>Frame ID:</b> '    + messageData.iframe.id +
+          ' <b>Height:</b> '     + messageData.height +
+          ' <b>Width:</b> '      + messageData.width + 
+          ' <b>Event type:</b> ' + messageData.type
+        );
+      },
+      messageCallback         : function(messageData){ // Callback fn when message is received
+        $('p#callback').html(
+          '<b>Frame ID:</b> '    + messageData.iframe.id +
+          ' <b>Message:</b> '    + messageData.message
+        );
+        alert(messageData.message);
+      },
+      closedCallback         : function(id){ // Callback fn when iFrame is closed
+        $('p#callback').html(
+          '<b>IFrame (</b>'    + id +
+          '<b>) removed from page.</b>'
+        );
+      }
+    });
+
+
+   </script>
+
+</body>
+
+</html>
