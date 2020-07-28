@@ -143,14 +143,17 @@
 
 
             <p >
+                This is an introductory project involving the prediction of League of Legend matches.  The data set has more features than that 
+                of Riot's personal API key but still not that in depth.  
+                Future versions of this  project could use DeepLeague's minimap data set which would need some kind of CNN. 
+                Regardless, this short analysis on LoL data shows potential interest for future projects and areas to drive it.
                 The data used in this project is imported from <a href="https://oracleselixir.com/"> Oracle's Elixir</a>, but it is possible to obtain additonal data using a key for the Riot API. 
                 The personal key is easy to recieve, but doesn't have a large amount of features that are super relevant to "deep data".  
                 The Oracle data used consists of matches from the League of Legends split from January to 07/21/2020.
                 There are over 100 features in our dataframe, where utlimately I wanted to see the probability of winning (result). 
                 One issues that is apparent is that numeric codes will needed to be added instead of strings (e.g. Champion Names). 
-                Furthermore, since I currently care about whether a team wins or loses (binary), I can use an SVM, Logistic model, 
+                Furthermore, since I currently care about whether a team wins or loses (binary), I can use an SVM, NN, Logistic model, 
                 or anything that deals with binary output. 
-                However, I want to run an SVM and a neural network due to its power and ease of inputting variables.
             </p>
     
             <p >
