@@ -116,6 +116,10 @@
             <div class="info-block">
                 <div class="info-text">
                   <h3 > <font color="white">Purpose</font></h3>   
+
+                  <p>
+                    July 22, 2020
+                  </p>
                     <p >
                         League of Legends</a> (LoL)
                         is a multiplayer online battle arena video game developed and published by Riot Games.
@@ -144,7 +148,7 @@
 
             <p >
                 This is an introductory project involving the prediction of League of Legend matches.  The data set has more features than that 
-                of Riot's personal API key but still not that in depth.  
+                of Riot's personal API key but still not that in-depth.  
                 Future versions of this  project could use DeepLeague's minimap data set which would need some kind of CNN. 
                 Regardless, this short analysis on LoL data shows potential interest for future projects and areas to drive it.
                 The data used in this project is imported from <a href="https://oracleselixir.com/"> Oracle's Elixir</a>, but it is possible to obtain additonal data using a key for the Riot API. 
@@ -162,11 +166,11 @@
                 and the column of the player being played. 
                 Since the champion name appears in multiple columns it might be better to using a dictionary where each champion 
                 is tagged to a code.  Other columns that will be encoded include `league`, `side`, `position`, and a few others.
-                Now the data is in ready to look at (sort of), I will create a new copy of df and remove any columns that im not 
+                Now the data is in ready to look at (sort of), I will create a new copy of df and remove any columns that I am not 
                 interested in or could possibly mess up ant analysis. 
                 This includes columns with player names and any urls. 
-                I will not be looking at league or patch right now. 
-                This is something I'll probably do later and do a focus analysis on both league and individual patches to see 
+                I will not be looking at the league (e.g. Korean, NA, European..) or the patch right now. 
+                This is something one could do a focus analysis on both league and individual patches to see 
                 how the meta differs.
                 There are so many projects and asepects to look at, I am going to be looking at team statistics rather than individual.
             </p>
@@ -194,7 +198,7 @@
             </div>
     
             <p >
-              Looking the the fifteen most correlated variables with winning we do not see anything too surprising. 
+              Looking the the fifteen most correlated variables with winning, we do not see anything too surprising. 
               Variables involving towers are the top two most correlated which makes sense. 
               The more towers you destroy the easier it is to get into a team's base. 
               However, we see that destroying the first tower, or even the first middle tower, 
@@ -216,8 +220,10 @@
               We know what is associated with winning, and it isn't shocking to see that losing is correlated with losing dragons, 
               team fights, turrets etc.. 
               However, we see some very small correlations with the gold and xp difference towards the middle of a game. 
-              And yes, correlation does not imply causation, but I will look at the stats of that later. 
+              And yes, correlation does not imply causation, but one could do statstical tests to prove there's an effect. 
               It would be really interesting to see which dragons are actually slain, to see if teams choose to ignore certain ones. 
+              This is something DeepLeague might be able to do.  Since DeepLeague offers images of the minimap, you could see which team 
+              defeats dragons first.  And given that there is set rules when dragons spawn, then one could reason out which dragon was slain.
               Ultimately, it would be great to have a model, and import in a games actions 
               (e.g. losing/killing cloud drake) and see the probability of the team winning, 
               or what a team needs to do to increase there chances of winning after losing an action.
@@ -230,7 +236,7 @@
               With some of the correlations in mind, I can use the seaborn package to visualize an example. 
               In this example, I used team kills per minute versus the gold spending percent difference.
               It's pretty clear that the more gold you spend compared to your opponent, and the more kills you get, the better your chances are of winning.
-              Also, 1's are a win and 0's are a lose (for clarification).
+              Also, 1's are a win and 0's are a loss.
             </p>
     
             <div style="text-align:center;">
