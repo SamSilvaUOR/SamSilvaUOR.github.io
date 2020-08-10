@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44817159-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-44817159-3');
+  </script>
+
+
+
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2'></script>
+  <script type='text/javascript'>
+      
+      $(function(){
+      
+          var iFrames = $('iframe');
+        
+        function iResize() {
+        
+          for (var i = 0, j = iFrames.length; i < j; i++) {
+            iFrames[i].style.height = iFrames[i].contentWindow.document.body.offsetHeight + 'px';}
+            }
+            
+            if ($.browser.safari || $.browser.opera) { 
+            
+               iFrames.load(function(){
+                   setTimeout(iResize, 0);
+                 });
+              
+               for (var i = 0, j = iFrames.length; i < j; i++) {
+                var iSource = iFrames[i].src;
+                iFrames[i].src = '';
+                iFrames[i].src = iSource;
+                 }
+                 
+            } else {
+               iFrames.load(function() { 
+                   this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+               });
+            }
+          
+          });
+
+  </script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('iframe').iframeAutoHeight({debug: true});
+    });
+  </script>
+
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Samuel Silva</title>
+	<meta name="description" content="">
+	<meta name="author" content="Sam">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="/CSS/webarticle_default.css">
+	 <link rel="stylesheet" href="/CSS/layout_blue.css">
+   <link rel="stylesheet" href="/CSS/hexagons.css">
+   <link rel="stylesheet" href="/CSS/media-queries.css">
+   <link rel="stylesheet" href="/CSS/magnific-popup.css">
+
+   <link rel="stylesheet" href="/CSS/portfolio.min.css">
+   <link rel="stylesheet" href="/CSS/item_page.css"> 
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <!-- Script
+   ================================================== -->
+	<script src="/JavaScript/modernizr.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3.0.3/dist/isotope.pkgd.js"></script>
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/Homepage/SS_Icon.png">
+
+   <style>
+   .responsive {
+       width: 100%;
+       max-width: 200px;
+       height: auto;
+   }
+   </style>
+   <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <h2>
+        Tic Tac Toe Agent Using a Markov Decision Process
+    </h2>
+
+    <p>
+      August 10, 2020
+    </p>
+
+    <p>
+        Along with unsupervised and supervised learning, another area of machine learning is reinforcement learning.  
+        Reinforcement learning is concerned with how software agents should take actions in an environment in order to maximize the notion of cumulative reward.  
+        Many fields such as game theory, control theory, and statistics use ideas based on reinforcement learning where researchers are more interested in finding the existence of optimal solutions, and algorithms for their exact computation, and less with learning or approximation. 
+        In this article, I will go through my exploration with reinforcement learning using a Markov decision process in creating an agent to learn the game of Tic Tac Toe.  
+
+    </p>
+
+    <div class="aligncenter">
+        <img src="/Projects and Papers/TicTacToe with MDP/tictactoe.png", alt="Imagerec" style="width:100%">
+    </div>
+
+    <p>
+        A Markov decision process (MPD) uses the ideas from a Markov chain where it’s a mathematical system that experiences transitions from one state to another according to certain probabilistic rules. 
+        The Markov chain takes the probabilities associated with various state changes are called transition probabilities. The process is characterized with a transition matrix describing the probabilities of particular transitions and an initial state or distribution.  
+        It is assumed that all possible states and transitions have been included in the definition of the process, so there is always a next state, and the process does not terminate.  
+        Markov chains can appear as a random walk in thermodynamics or the statistical example of Gambler’s Ruin.  More on gambler’s ruin <a href="http://www.columbia.edu/~ks20/FE-Notes/4700-07-Notes-GR.pdf">here</a>, 
+        and random walks <a href=" https://www.mit.edu/~kardar/teaching/projects/chemotaxis(AndreaSchmidt)/random.htm">here</a>.
+    </p>
+    
+    <p>
+        When we define reinforcement learning and the Markov decision process, it is not surprising to see the parallels and how Markov processes fall in place.  Reinforcement learning has four main concepts: Agent, Enviroment, Action, and Rewards.
+        The agent refers to the program you train, with the aim of doing a job you specify.
+        Environment: the world, real or virtual, in which the agent performs actions.
+        Action: a move made by the agent, which causes a status change in the environment.
+        Rewards: the evaluation of an action, which can be positive or negative.
+        The process can be outlined in the figure <a href="https://medium.com/ai³-theory-practice-business/reinforcement-learning-part-1-a-brief-introduction-a53a849771cf">below</a>. 
+    </p>
+
+    <div class="aligncenter">
+        <img src="/Projects and Papers/TicTacToe with MDP/ReinforcementLearning.png", alt="Imagerec" style="width:100%">
+    </div>
+
+    <p>
+        The Markov decision process differs from the Markov Chain in that it uses these “actions” we defined above: a move made by the agent, which causes a status change in the environment. 
+        This implies that the next state is related to the actions taken in the current state rather than the basic current state.  Also, unlike the Markov chain, the MPD can lead to rewards.  
+        The whole goal is to use the MPD to return the maximum number of rewards, essentially the agent learns by getting a “reward” for making the correct decision.  
+        For more about the statistics and theory behind MDP, there's a nice paper I found from  <a href="https://www.cs.rice.edu/~vardi/dag01/givan1.pdf">Rice University</a>.
+    </p>
+
+    <p>
+        With all that in mind, time to design a model to learn the game of Tic Tac Toe (TTT).  
+        Theoretically, the agent will be optimized when it receives a draw every time during training.  
+        TTT is one of those games where if each player is playing the ideal move, then the game will end in a draw.  
+
+    </p>
+
+
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+      <div class="row">
+         <div class="twelve columns">
+
+            <ul class="copyright">
+               <li>&copy;Samuel Silva 2020</li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="JavaScript/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="/JavaScript/flexslider.js"></script>
+   <script src="/JavaScript/waypoints.js"></script>
+   <script src="/JavaScript/fittext.js"></script>
+   <script src="/JavaScript/magnific-popup.js"></script>
+   <script src="/JavaScript/init.js"></script>
+   <script src="/JavaScript/iframeResizer.min.js"></script>
+   <script type="text/javascript">
+
+    iFrameResize({
+      log                     : true,                  // Enable console logging
+      enablePublicMethods     : true,                  // Enable methods within iframe hosted page
+      resizedCallback         : function(messageData){ // Callback fn when resize is received
+        $('p#callback').html(
+          '<b>Frame ID:</b> '    + messageData.iframe.id +
+          ' <b>Height:</b> '     + messageData.height +
+          ' <b>Width:</b> '      + messageData.width + 
+          ' <b>Event type:</b> ' + messageData.type
+        );
+      },
+      messageCallback         : function(messageData){ // Callback fn when message is received
+        $('p#callback').html(
+          '<b>Frame ID:</b> '    + messageData.iframe.id +
+          ' <b>Message:</b> '    + messageData.message
+        );
+        alert(messageData.message);
+      },
+      closedCallback         : function(id){ // Callback fn when iFrame is closed
+        $('p#callback').html(
+          '<b>IFrame (</b>'    + id +
+          '<b>) removed from page.</b>'
+        );
+      }
+    });
+
+
+   </script>
+
+</body>
+
+</html>
