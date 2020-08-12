@@ -80,13 +80,16 @@
 
    <link rel="stylesheet" href="/CSS/portfolio.min.css">
    <link rel="stylesheet" href="/CSS/item_page.css"> 
-   
+   <link rel="stylesheet" href="/CSS/prism.css"> 
+
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
    <!-- Script
    ================================================== -->
 	<script src="/JavaScript/modernizr.js"></script>
   <script src="https://unpkg.com/isotope-layout@3.0.3/dist/isotope.pkgd.js"></script>
+  <script src="/JavaScript/prism.js"></script>
+
 
    <!-- Favicons
 	================================================== -->
@@ -157,8 +160,194 @@
         With all that in mind, time to design a model to learn the game of Tic Tac Toe (TTT).  
         Theoretically, the agent will be optimized when it receives a draw every time during training.  
         TTT is one of those games where if each player is playing the ideal move, then the game will end in a draw.  
+        First, I made a class that generates a tic tac toe board.  
+        This can be done by creating an n-dimensional array and populating it with all zeros with the “np.zeros” function in numpy. 
+        A written function is made to generate and reset the board.
 
     </p>
+
+
+      <pre class = "language-py"> 
+        <code class="language-py">
+          class Board:
+    
+          # creation of a class to generate the shape of the board, 3x3
+              
+              def __init__(self):
+                  
+                  self.np = __import__('numpy')
+                  self.board = self.np.zeros(9).reshape(3,3)  # use numpy to create a new array of given shape filled with zeros.
+                  
+              def reset(self):
+                  
+                  self.board = self.np.zeros(9).reshape(3,3)        
+          </code>
+      </pre>
+
+      <p>
+        Other funtions were created under the Board class which tracked the placements of the players, and to act as a form of evaluation.  
+        Next, a class was created to act as a computer player, where it made the move, anfd tracked and stored the moves.
+        A TTT class is made that simulates the games between both Computer versus Computer, and gives the option for Player versus the Computer.
+        The code is found on the Github  <a href="https://github.com/SamSilvaUOR/TicTacToe-ReinforcementLearning">repository</a>.
+        In a seperate file, the training and playing of the game takes place.
+      </p>
+
+      <pre class = "language-py">
+        <code class = "language-py">
+          def train(cold=True, name='data.csv', n=10000):
+          # trains computer and saves data, is adjusted for both cold and warm starts when applicable.
+    
+            ttt = TicTacToe.TicTacToe()
+    
+            if cold:
+                
+                print('Stochastic\n')
+                wins1 = ttt.CvC(iterations=int(0.2*n), rand=True)
+                print('Learning\n')
+                wins2 = ttt.CvC(iterations=int(0.8*n), rand=False)
+                ttt.comp.store_dta(name)
+                
+                wins = wins1.append(wins2, ignore_index=True)
+                x = wins.groupby(wins.index//100).sum()
+                plt.plot(x['win'])
+                plt.show()
+            
+            else:
+                
+                print('Loading...')
+                ttt.comp.load_dta(name)
+                
+                wins = ttt.CvC(iterations=n, rand=False)
+                ttt.comp.store_dta(name)
+                
+                x = wins.groupby(wins.index//100).sum()
+                plt.plot(x['win'][:-1])
+                plt.show()
+        </code>
+      </pre>
+
+      <p>
+        The data.csv file saves the moves which can be uploaded into a function that allows to be user to play tic tac toe.  
+        The computer uses the data trained on the Computer versus Computer to determine its moves.  It did a lot of training for the TTT to  play
+        ideal moves.  Even with 100,000 training sessions I found that I could beat it pretty easily with me playing optimized moves.  
+        Around 400,000 I saw a lot of improvement where ties became consistent.  
+        I ran into a small issue where my Jupyter notebook started becoming unresponsive past 400,000 sessions.  During training I 
+        would go for about 400,000 sessions, and then do a warm start from that point because I saved all the moves, and then I did another two sets of 400,000. 
+        At this point I was getting the optimized moves and recieved draws every time unless I made a mistake and lost. 
+        A sample game takes place below.
+
+      </p>
+
+      <pre>
+        <code>
+          Loading...
+                                          |     |     
+                                          |     |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                          |     |     
+                                      Player 1 (X): 3
+                                          |     |     
+                                          |     |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                          |     |     
+
+                                      Player 2 (O): 5
+                                          |     |     
+                                          |     |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  O  |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                          |     |     
+                                      Player 1 (X): 1
+                                          |     |     
+                                       X  |     |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  O  |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                          |     |     
+
+                                      Player 2 (O): 2
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  O  |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |     |     
+                                          |     |     
+                                      Player 1 (X): 8
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  O  |     
+                                     _____|_____|_____
+                                          |     |     
+                                          |  X  |     
+                                          |     |     
+
+                                      Player 2 (O): 6
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  O  |  O  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  X  |     
+                                          |     |     
+                                      Player 1 (X): 4
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                       X  |  O  |  O  
+                                     _____|_____|_____
+                                          |     |     
+                                          |  X  |     
+                                          |     |     
+
+                                      Player 2 (O): 7
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                       X  |  O  |  O  
+                                     _____|_____|_____
+                                          |     |     
+                                       O  |  X  |     
+                                          |     |     
+                                      Player 1 (X): 9
+                                          |     |     
+                                       X  |  O  |  X  
+                                     _____|_____|_____
+                                          |     |     
+                                       X  |  O  |  O  
+                                     _____|_____|_____
+                                          |     |     
+                                       O  |  X  |  X  
+                                          |     |     
+
+                                      Winner: tie
+        </code>
+      </pre>
 
 
 
