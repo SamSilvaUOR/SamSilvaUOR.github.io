@@ -234,8 +234,33 @@
         I ran into a small issue where my Jupyter notebook started becoming unresponsive past 400,000 sessions.  During training I 
         would go for about 400,000 sessions, and then do a warm start from that point because I saved all the moves, and then I did another two sets of 400,000. 
         At this point I was getting the optimized moves and recieved draws every time unless I made a mistake and lost. 
-        A sample game takes place below.
 
+      </p>
+
+      <p>
+        After training I can import in the data set of moves and evalute each move using ... 
+      </p>
+
+      <pre class = "language-py">
+        <code class = "language-py">
+    def test(name='data.csv', n=100000):
+    '''Examin performace of computer without adjusting training data'''
+    
+    ttt = TicTacToe.TicTacToe()
+    
+    print('Loading...')
+    ttt.comp.load_dta(name)
+    wins = ttt.CvC(iterations=n, rand=False)
+    
+    x = wins.groupby(wins.index//100).sum()
+    plt.plot(x['win'][:-1])
+    plt.show()
+        </code>
+      </pre>
+
+      <p>
+        The evalutation code returns a plot within the main code that trains the data. It measures how often the optimized moves are made. 
+        A sample game is shown below.
       </p>
 
       <pre>
@@ -348,6 +373,8 @@
      Winner: tie
         </code>
       </pre>
+
+    
 
 
 
